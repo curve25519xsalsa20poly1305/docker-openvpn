@@ -63,10 +63,8 @@ cat /openvpn-fifo > /dev/null
 rm -f /openvpn-fifo
 
 if [[ -n "${OPENVPN_UP}" ]]; then
-    "${OPENVPN_UP}" &
-fi
-
-if [[ $# -gt 0 ]]; then
+    spawn "${OPENVPN_UP}" "$@"
+elif [[ $# -gt 0 ]]; then
     "$@"
 fi
 
